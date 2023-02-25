@@ -23,11 +23,7 @@ import { TransactionService } from './services/transaction.service';
       synchronize: true,
     }),
   ],
-  controllers: [
-    BankController,
-    CategoryController,
-    TransactionController,
-  ],
+  controllers: [BankController, CategoryController, TransactionController],
   providers: [BankService, CategoryService, TransactionService],
 })
 export class AppModule {}
