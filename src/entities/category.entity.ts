@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
+import { Transaction } from './transaction.entity';
 
 @Entity()
 export class Category {
@@ -10,4 +11,5 @@ export class Category {
   @ApiProperty()
   @Column({ name: 'name', type: 'text' })
   name: string;
+
 }

@@ -1,10 +1,8 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { ApiProperty } from '@nestjs/swagger';
-
-export enum transactionType {
-  PROFITABLE = 'profitable',
-  CONSUMABLE = 'consumable',
-}
+import { TransactionType } from '../models/transaction.model';
+import { Bank } from './bank.entity';
+import { Category } from './category.entity';
 
 @Entity()
 export class Transaction {
@@ -20,8 +18,15 @@ export class Transaction {
   @Column({
     name: 'types',
     type: 'enum',
-    enum: transactionType,
-    default: transactionType.CONSUMABLE,
+    enum: TransactionType,
+    default: TransactionType.CONSUMABLE,
   })
-  type: transactionType;
+  type: TransactionType;
+
+  @ManyToOne(() => Bank, (bank) => bank.transactions)
+  bank: Bank;
+
+  @ManyToMany(() => Category)
+  @JoinTable()
+  categories: Category[];
 }
