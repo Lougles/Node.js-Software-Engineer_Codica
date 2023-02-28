@@ -1,8 +1,12 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { IsUUID } from "class-validator";
 
 export class TransactionModel {
+  @ApiProperty()
   id: string;
+  @ApiProperty()
   amount: number;
+  @ApiProperty()
   type: TransactionType;
 }
 
@@ -11,7 +15,19 @@ export enum TransactionType {
   CONSUMABLE = "consumable",
 }
 
+export class TransactionCreateModel {
+  @ApiProperty()
+  amount: number;
+  @ApiProperty()
+  type: TransactionType;
 
+  @ApiProperty()
+  categories: string[];
+
+  @IsUUID()
+  @ApiProperty()
+  bank: string;
+}
 export class TransactionDeleteModel {
   @ApiProperty()
   id: string;

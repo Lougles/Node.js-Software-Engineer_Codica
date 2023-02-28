@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, PrimaryColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Transaction } from './transaction.entity';
 
@@ -12,4 +12,6 @@ export class Category {
   @Column({ name: 'name', type: 'text' })
   name: string;
 
+  @ManyToMany(() => Transaction, transaction => transaction.categories)
+  transactions: Transaction[];
 }

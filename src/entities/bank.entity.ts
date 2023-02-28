@@ -1,6 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Transaction } from './transaction.entity';
+import { IsOptional } from "class-validator";
 
 @Entity()
 export class Bank {
@@ -13,9 +14,10 @@ export class Bank {
   name: string;
 
   @ApiProperty()
+  @IsOptional()
   @Column({ name: 'balance', type: 'int' })
   balance: number;
 
-  @OneToMany(() => Transaction, (transaction) => transaction.bank)
+  @OneToMany(() => Transaction, transaction => transaction.bank)
   transactions: Transaction[];
 }

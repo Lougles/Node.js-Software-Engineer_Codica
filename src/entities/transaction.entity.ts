@@ -1,8 +1,9 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { TransactionType } from '../models/transaction.model';
 import { Bank } from './bank.entity';
 import { Category } from './category.entity';
+import { Transaction_categoryEntity } from './transaction_category.entity';
 
 @Entity()
 export class Transaction {
@@ -23,10 +24,26 @@ export class Transaction {
   })
   type: TransactionType;
 
-  @ManyToOne(() => Bank, (bank) => bank.transactions)
+  @ApiProperty()
+  @Column({ name: 'bankId', type: 'text', default: null })
+  bankId: string;
+
+  @ApiProperty()
+  @Column({ name: 'categoryIds', type: 'text', default: null })
+  categoryIds: string[];
+
+  @ManyToOne(() => Bank, bank => bank.transactions)
   bank: Bank;
 
-  @ManyToMany(() => Category)
-  @JoinTable()
+  @ManyToMany(() => Category, category => category.transactions)
+  @JoinTable({
+    // name: Transaction_categoryEntity,
+    // joinColumn: {
+    //   name: 'transaction_id',
+    // },
+    // inverseJoinColumn: {
+    //   name: 'category_id',
+    // },
+  })
   categories: Category[];
 }

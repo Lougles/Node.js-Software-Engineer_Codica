@@ -6,7 +6,7 @@ import {
   successResponse,
 } from "../models/response.model";
 import { Transaction } from "../entities/transaction.entity";
-import { TransactionDeleteModel, TransactionModel } from "../models/transaction.model";
+import { TransactionCreateModel, TransactionDeleteModel, TransactionModel } from "../models/transaction.model";
 
 @Controller("transaction")
 export class TransactionController {
@@ -25,7 +25,11 @@ export class TransactionController {
     return successResponse(transactions);
   }
 
-
+  @Post("create")
+  async create(@Body() dto: TransactionCreateModel): Promise<ResponseModel<Transaction>> {
+    const newTransaction = await this.service.create(dto);
+    return successResponse(newTransaction);
+  }
 
   @Post("delete")
   async delete(@Body() body: TransactionDeleteModel): Promise<ResponseModel<void>> {
