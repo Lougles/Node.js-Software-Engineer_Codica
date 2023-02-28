@@ -7,9 +7,11 @@ import { TransactionDeleteModel } from '../models/transaction.model';
 export class TransactionService {
   constructor(private readonly entityManager: EntityManager) {}
 
-  async getAll(): Promise<Transaction[]> {
-    return await this.entityManager.find(Transaction);
+  async getAll(skip: number, take: number): Promise<Transaction[]> {
+    return await this.entityManager.find(Transaction, { skip: skip, take: take });
   }
+
+
 
   async delete(dto: TransactionDeleteModel): Promise<void> {
     await this.entityManager.delete(Transaction, dto.id);

@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { EntityManager } from 'typeorm';
+import { EntityManager, Repository } from 'typeorm';
 import { Bank } from '../entities/bank.entity';
-import { BankCreateModel, BankDeleteModel, BankUpdateModel } from "../models/bank.model";
+import { BankCreateModel, BankDeleteModel, BankUpdateModel } from '../models/bank.model';
 import { uuid } from 'uuidv4';
 
 @Injectable()

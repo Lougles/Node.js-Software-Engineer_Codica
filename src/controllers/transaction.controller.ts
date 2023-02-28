@@ -20,10 +20,12 @@ export class TransactionController {
   }
 
   @Get("getAll")
-  async getAll(): Promise<ResponseModel<Transaction[]>> {
-    const transactions = await this.service.getAll();
+  async getAll(@Body() body: {skip: number, take: number}): Promise<ResponseModel<Transaction[]>> {
+    const transactions = await this.service.getAll(body.skip, body.take);
     return successResponse(transactions);
   }
+
+
 
   @Post("delete")
   async delete(@Body() body: TransactionDeleteModel): Promise<ResponseModel<void>> {
