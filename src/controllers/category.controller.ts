@@ -28,17 +28,13 @@ export class CategoryController {
   }
 
   @Post('create')
-  async create(
-    @Body() body: CategoryCreateModel,
-  ): Promise<ResponseModel<Category>> {
+  async create(@Body() body: CategoryCreateModel): Promise<ResponseModel<Category>> {
     const newCategory = await this.service.create(body);
     return successResponse(newCategory);
   }
 
   @Post('update')
-  async update(
-    @Body() body: CategoryUpdateModel,
-  ): Promise<ResponseModel<Category>> {
+  async update(@Body() body: CategoryUpdateModel): Promise<ResponseModel<Category>> {
     const updateBank = await this.service.update(body);
     return successResponse(updateBank);
   }

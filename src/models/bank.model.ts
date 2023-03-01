@@ -3,9 +3,6 @@ import { ApiProperty } from '@nestjs/swagger';
 export class BankCreateModel {
   @ApiProperty()
   name: string;
-
-  @ApiProperty()
-  balance: number;
 }
 
 export class BankUpdateModel {
@@ -14,9 +11,6 @@ export class BankUpdateModel {
 
   @ApiProperty()
   name: string;
-
-  @ApiProperty()
-  balance: number;
 }
 
 export class BankDeleteModel {

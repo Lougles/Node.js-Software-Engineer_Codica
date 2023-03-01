@@ -11,7 +11,7 @@ export class Transaction {
   id: string;
 
   @ApiProperty()
-  @Column({ name: 'amount', type: 'int' })
+  @Column({ name: 'amount', type: 'float', default: 0 })
   amount: number;
 
   @ApiProperty()

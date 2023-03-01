@@ -1,19 +1,37 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { EntityManager, Repository } from 'typeorm';
+import { EntityManager } from 'typeorm';
 import { Bank } from '../entities/bank.entity';
 import { BankCreateModel, BankDeleteModel, BankUpdateModel } from '../models/bank.model';
 import { uuid } from 'uuidv4';
+import { countBanksBalance } from '../utils/count.balance';
 
 @Injectable()
 export class BankService {
   constructor(private readonly entityManager: EntityManager) {}
 
   async getAll(): Promise<Bank[]> {
-    return await this.entityManager.find(Bank, { relations: { transactions: true } });
+    const banks = await this.entityManager.find(Bank, { relations: { transactions: true } });
+    countBanksBalance(banks);
+    // for (let i = 0; i < banks.length; i++) {
+    //   banks[i].balance = 0;
+    //   for (let j = 0; j < banks[i].transactions.length; j++) {
+    //     if (banks[i].transactions[j].type === TransactionType.CONSUMABLE) {
+    //       banks[i].balance -= banks[i].transactions[j].amount;
+    //     }
+    //     if (banks[i].transactions[j].type === TransactionType.PROFITABLE) {
+    //       banks[i].balance += banks[i].transactions[j].amount;
+    //     }
+    //   }
+    // }
+    await this.entityManager.save(banks);
+    return banks;
   }
 
   async getOne(id: string): Promise<Bank> {
-    return await this.entityManager.findOne(Bank, { where: { id } });
+    const bank = await this.entityManager.findOne(Bank, { where: { id }, relations: { transactions: true } });
+    countBanksBalance([bank]);
+    await this.entityManager.save(bank);
+    return bank;
   }
 
   async create(dto: BankCreateModel): Promise<Bank> {
@@ -21,7 +39,6 @@ export class BankService {
     await this.entityManager.insert(Bank, {
       id,
       name: dto.name,
-      balance: dto.balance,
     });
     return await this.entityManager.findOne(Bank, { where: { id } });
   }
@@ -34,7 +51,6 @@ export class BankService {
       throw new BadRequestException('There is no such bank!');
     }
     bank.name = dto.name;
-    bank.balance = dto.balance;
     await this.entityManager.save(bank);
     return this.entityManager.findOne(Bank, { where: { id: dto.id } });
   }

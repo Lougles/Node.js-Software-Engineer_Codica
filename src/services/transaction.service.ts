@@ -16,10 +16,10 @@ export class TransactionService {
 
   async create(dto: TransactionCreateModel): Promise<Transaction> {
     const temp = [];
-    const checkBank = await this.entityManager.findOne(Bank, {
+    const bank = await this.entityManager.findOne(Bank, {
       where: { id: dto.bank },
     });
-    if (!checkBank) {
+    if (!bank) {
       throw new BadRequestException('Bank not found');
     }
     for (const i of dto.categories) {
