@@ -2,18 +2,14 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { EntityManager } from 'typeorm';
 import { Category } from '../entities/category.entity';
 import { uuid } from 'uuidv4';
-import {
-  CategoryCreateModel,
-  CategoryDeleteModel,
-  CategoryUpdateModel,
-} from '../models/category.model';
+import { CategoryCreateModel, CategoryDeleteModel, CategoryUpdateModel } from '../models/category.model';
 
 @Injectable()
 export class CategoryService {
   constructor(private readonly entityManager: EntityManager) {}
 
   async getAll(): Promise<Category[]> {
-    return await this.entityManager.find(Category);
+    return await this.entityManager.find(Category, { relations: { transactions: true } });
   }
   async getOne(id: string): Promise<Category> {
     return await this.entityManager.findOne(Category, { where: { id } });

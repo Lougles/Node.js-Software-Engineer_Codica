@@ -15,34 +15,30 @@ export class TransactionService {
   }
 
   async create(dto: TransactionCreateModel): Promise<Transaction> {
+    const temp = [];
     const checkBank = await this.entityManager.findOne(Bank, {
       where: { id: dto.bank },
     });
     if (!checkBank) {
       throw new BadRequestException('Bank not found');
     }
-    for (let i = 0; i < dto.categories.length; i++) {
-      const temp = await this.entityManager.findOne(Category, {
-        where: { id: dto.categories[i] },
-      });
-      if (!temp) {
+    for (const i of dto.categories) {
+      const checkCategories = await this.entityManager.findOne(Category, { where: { id: i } });
+      if (!checkCategories) {
         throw new BadRequestException('Category not found');
       }
-    }
-    if (!checkBank) {
-      throw new BadRequestException('Bank not found');
+      temp.push(checkCategories);
     }
     const id = uuid();
-    await this.entityManager.insert(Transaction, {
-      id,
-      amount: dto.amount,
-      type: dto.type,
-      bankId: dto.bank,
-      categoryIds: dto.categories,
-    });
-    return await this.entityManager.findOne(Transaction, { where: { id }, relations: { bank: true, categories: true } });
+    const transaction = new Transaction();
+    transaction.id = id;
+    transaction.amount = dto.amount;
+    transaction.type = dto.type;
+    transaction.bankId = dto.bank;
+    transaction.categories = temp;
+    await this.entityManager.save(transaction);
+    return transaction;
   }
-
   async delete(dto: TransactionDeleteModel): Promise<void> {
     await this.entityManager.delete(Transaction, dto.id);
   }

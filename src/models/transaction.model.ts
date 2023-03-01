@@ -22,7 +22,7 @@ export class TransactionCreateModel {
   type: TransactionType;
 
   @ApiProperty()
-  categories: string[];
+  categories: [];
 
   @IsUUID()
   @ApiProperty()
