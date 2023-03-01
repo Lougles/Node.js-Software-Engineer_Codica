@@ -27,6 +27,9 @@ export class Transaction {
   @Column({ name: 'bankId', type: 'text', default: null })
   bankId: string;
 
+  @Column({ name: 'created_at', type: 'timestamp', default: new Date() })
+  createdAt: Date;
+
   @ManyToOne(() => Bank, bank => bank.transactions)
   bank: Bank;
 

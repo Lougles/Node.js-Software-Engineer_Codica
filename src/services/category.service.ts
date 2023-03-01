@@ -37,6 +37,10 @@ export class CategoryService {
   }
 
   async delete(dto: CategoryDeleteModel): Promise<void> {
+    const category = await this.entityManager.findOne(Category, { where: { id: dto.id }, relations: { transactions: true } });
+    if (category?.transactions?.length) {
+      throw new BadRequestException("You can't delete bank with transactions");
+    }
     await this.entityManager.delete(Category, dto.id);
   }
 }

@@ -9,7 +9,7 @@ export class BankService {
   constructor(private readonly entityManager: EntityManager) {}
 
   async getAll(): Promise<Bank[]> {
-    return await this.entityManager.find(Bank);
+    return await this.entityManager.find(Bank, { relations: { transactions: true } });
   }
 
   async getOne(id: string): Promise<Bank> {
@@ -40,6 +40,10 @@ export class BankService {
   }
 
   async delete(dto: BankDeleteModel): Promise<void> {
+    const bank = await this.entityManager.findOne(Bank, { where: { id: dto.id }, relations: { transactions: true } });
+    if (bank?.transactions?.length) {
+      throw new BadRequestException("You can't delete bank with transactions");
+    }
     await this.entityManager.delete(Bank, dto.id);
   }
 }
