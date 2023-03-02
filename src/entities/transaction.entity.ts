@@ -1,8 +1,18 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  PrimaryColumn,
+} from "typeorm";
 import { ApiProperty } from '@nestjs/swagger';
 import { TransactionType } from '../models/transaction.model';
 import { Bank } from './bank.entity';
 import { Category } from './category.entity';
+import moment from 'moment';
 
 @Entity()
 export class Transaction {
@@ -27,7 +37,10 @@ export class Transaction {
   @Column({ name: 'bankId', type: 'text', default: null })
   bankId: string;
 
-  @Column({ name: 'created_at', type: 'timestamp', default: new Date() })
+  // @Column({ name: 'date', type: 'date', default: ' ' })
+  // date: Date;
+
+  @Column({ name: 'createdAt', type: 'date', default: new Date() })
   createdAt: Date;
 
   @ManyToOne(() => Bank, bank => bank.transactions)

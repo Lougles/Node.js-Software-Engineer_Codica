@@ -17,3 +17,14 @@ export class CategoryDeleteModel {
   @ApiProperty()
   id: string;
 }
+
+export class GetStatisticsFromPeriodModel {
+  @ApiProperty()
+  ids: string[];
+
+  @ApiProperty()
+  fromPeriod: string;
+
+  @ApiProperty()
+  toPeriod: string;
+}

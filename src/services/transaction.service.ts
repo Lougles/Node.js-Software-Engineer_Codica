@@ -29,6 +29,8 @@ export class TransactionService {
       }
       temp.push(checkCategories);
     }
+    console.log(dto);
+    console.log(dto.createAt);
     const id = uuid();
     const transaction = new Transaction();
     transaction.id = id;
@@ -36,6 +38,7 @@ export class TransactionService {
     transaction.type = dto.type;
     transaction.bankId = dto.bank;
     transaction.categories = temp;
+    transaction.createdAt = dto.createAt;
     await this.entityManager.save(transaction);
     return transaction;
   }

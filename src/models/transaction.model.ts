@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsUUID } from "class-validator";
+import { IsOptional, IsUUID } from "class-validator";
 
 export class TransactionModel {
   @ApiProperty()
@@ -27,6 +27,10 @@ export class TransactionCreateModel {
   @IsUUID()
   @ApiProperty()
   bank: string;
+
+  @ApiProperty()
+  @IsOptional()
+  createAt: Date;
 }
 export class TransactionDeleteModel {
   @ApiProperty()
