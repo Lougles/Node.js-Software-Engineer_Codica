@@ -1,7 +1,14 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Bank } from './entities/bank.entity';
+import { Category } from './entities/category.entity';
+import { Transaction } from './entities/transaction.entity';
+import { BankController } from './controllers/bank.controller';
+import { CategoryController } from './controllers/category.controller';
+import { TransactionController } from './controllers/transaction.controller';
+import { BankService } from './services/bank.service';
+import { CategoryService } from './services/category.service';
+import { TransactionService } from './services/transaction.service';
 
 @Module({
   imports: [
@@ -12,11 +19,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'postgres',
       password: 'postgres',
       database: 'bankTransactions',
-      entities: [],
+      entities: [Bank, Category, Transaction],
       synchronize: true,
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [BankController, CategoryController, TransactionController],
+  providers: [BankService, CategoryService, TransactionService],
 })
 export class AppModule {}
