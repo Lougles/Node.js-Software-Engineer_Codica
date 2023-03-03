@@ -1,0 +1,270 @@
+openapi: 3.0.0
+paths:
+  /bank/getAll:
+    get:
+      operationId: BankController_getAll
+      parameters: []
+      responses:
+        '200':
+          description: ''
+  /bank/getOne:
+    get:
+      operationId: BankController_getOne
+      parameters: []
+      responses:
+        '200':
+          description: ''
+  /bank/create:
+    post:
+      operationId: BankController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankCreateModel'
+      responses:
+        '201':
+          description: ''
+  /bank/update:
+    post:
+      operationId: BankController_update
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankUpdateModel'
+      responses:
+        '201':
+          description: ''
+  /bank/delete:
+    post:
+      operationId: BankController_delete
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankDeleteModel'
+      responses:
+        '201':
+          description: ''
+  /category/getAll:
+    get:
+      operationId: CategoryController_getAll
+      parameters: []
+      responses:
+        '200':
+          description: ''
+  /category/getOne:
+    get:
+      operationId: CategoryController_getOne
+      parameters: []
+      responses:
+        '200':
+          description: ''
+  /category/getStatistics:
+    get:
+      operationId: CategoryController_getStatisticsForPeriod
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetStatisticsFromPeriodModel'
+      responses:
+        '200':
+          description: ''
+  /category/create:
+    post:
+      operationId: CategoryController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryCreateModel'
+      responses:
+        '201':
+          description: ''
+  /category/update:
+    post:
+      operationId: CategoryController_update
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryUpdateModel'
+      responses:
+        '201':
+          description: ''
+  /category/delete:
+    post:
+      operationId: CategoryController_delete
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryDeleteModel'
+      responses:
+        '201':
+          description: ''
+  /transaction/webhook:
+    post:
+      operationId: TransactionController_bankWebHook
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionCreateModel'
+      responses:
+        '201':
+          description: ''
+  /transaction/getAll:
+    get:
+      operationId: TransactionController_getAll
+      parameters: []
+      responses:
+        '200':
+          description: ''
+  /transaction/vovachelidze-webhook-create-transaction:
+    post:
+      operationId: TransactionController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionCreateModel'
+      responses:
+        '201':
+          description: ''
+  /transaction/delete:
+    post:
+      operationId: TransactionController_delete
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionDeleteModel'
+      responses:
+        '201':
+          description: ''
+info:
+  title: Nodejs-Software-Engineer_Codica
+  description: The API description
+  version: '1.0'
+  contact: {}
+tags:
+  - name: codica
+    description: ''
+servers: []
+components:
+  schemas:
+    BankCreateModel:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    BankUpdateModel:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+        - id
+        - name
+    BankDeleteModel:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+        - id
+    GetStatisticsFromPeriodModel:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+        fromPeriod:
+          type: string
+        toPeriod:
+          type: string
+      required:
+        - ids
+        - fromPeriod
+        - toPeriod
+    CategoryCreateModel:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    CategoryUpdateModel:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+        - id
+        - name
+    CategoryDeleteModel:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+        - id
+    TransactionCreateModel:
+      type: object
+      properties:
+        amount:
+          type: number
+        type:
+          type: string
+        categories:
+          type: array
+          items:
+            type: string
+        bank:
+          type: string
+        createAt:
+          format: date-time
+          type: string
+      required:
+        - amount
+        - type
+        - categories
+        - bank
+        - createAt
+    TransactionDeleteModel:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+        - id
