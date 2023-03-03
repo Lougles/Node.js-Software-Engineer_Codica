@@ -13,7 +13,9 @@ export class TransactionService {
   async getAll(skip: number, take: number): Promise<Transaction[]> {
     return await this.entityManager.find(Transaction, { skip: skip, take: take, relations: { categories: true, bank: true } });
   }
-
+  webhookTransaction(data: TransactionCreateModel): TransactionCreateModel {
+    return data;
+  }
   async create(dto: TransactionCreateModel): Promise<Transaction> {
     const temp = [];
     const bank = await this.entityManager.findOne(Bank, {
@@ -29,8 +31,6 @@ export class TransactionService {
       }
       temp.push(checkCategories);
     }
-    console.log(dto);
-    console.log(dto.createAt);
     const id = uuid();
     const transaction = new Transaction();
     transaction.id = id;

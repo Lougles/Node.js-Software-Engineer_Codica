@@ -7,16 +7,31 @@ import {
 } from "../models/response.model";
 import { Transaction } from "../entities/transaction.entity";
 import { TransactionCreateModel, TransactionDeleteModel, TransactionModel } from "../models/transaction.model";
+import { HttpService } from '@nestjs/axios';
 
 @Controller("transaction")
 export class TransactionController {
-  constructor(private readonly service: TransactionService) {
+  constructor(private readonly service: TransactionService, private readonly httpService: HttpService) {
   }
 
   @Post("webhook")
-  async bankWebHook(@Body() body: TransactionModel) {
-    //Валідація даних
-    // create transaction in service
+  bankWebHook(@Body() data:TransactionCreateModel) {
+    try {
+      const createTransaction = this.service.webhookTransaction(data);
+      this.httpService
+        .post('http://localhost:3000/transaction/vovachelidze-webhook-create-transaction', data)
+        .subscribe({
+          complete: () => {
+            console.log('completed');
+          },
+          error: (err) => {
+            return err.message;
+          },
+        });
+      return createTransaction;
+    }catch (e) {
+      return e.message;
+    }
   }
 
   @Get("getAll")
@@ -25,7 +40,7 @@ export class TransactionController {
     return successResponse(transactions);
   }
 
-  @Post("create")
+  @Post("vovachelidze-webhook-create-transaction")
   async create(@Body() dto: TransactionCreateModel): Promise<ResponseModel<Transaction>> {
     const newTransaction = await this.service.create(dto);
     return successResponse(newTransaction);
