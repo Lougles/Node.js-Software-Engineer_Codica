@@ -9,9 +9,12 @@ import { TransactionController } from './controllers/transaction.controller';
 import { BankService } from './services/bank.service';
 import { CategoryService } from './services/category.service';
 import { TransactionService } from './services/transaction.service';
+import { HttpModule } from '@nestjs/axios';
+
 
 @Module({
   imports: [
+    HttpModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
