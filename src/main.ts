@@ -13,7 +13,7 @@ async function bootstrap() {
     .addTag('codica')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('', app, document);
   await app.listen(3000);
   app.use(bodyParser.json({ limit: '2mb' }));
   app.useGlobalPipes(new ValidationPipe({ whitelist: false }));
