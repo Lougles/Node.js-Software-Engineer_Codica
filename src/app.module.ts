@@ -10,8 +10,7 @@ import { BankService } from './services/bank.service';
 import { CategoryService } from './services/category.service';
 import { TransactionService } from './services/transaction.service';
 import { HttpModule } from '@nestjs/axios';
-
-
+import { GlobalExceptionFilter } from './utils/exceptions';
 @Module({
   imports: [
     HttpModule,
@@ -27,6 +26,6 @@ import { HttpModule } from '@nestjs/axios';
     }),
   ],
   controllers: [BankController, CategoryController, TransactionController],
-  providers: [BankService, CategoryService, TransactionService],
+  providers: [BankService, CategoryService, TransactionService, GlobalExceptionFilter],
 })
 export class AppModule {}
