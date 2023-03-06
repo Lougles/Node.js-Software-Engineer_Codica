@@ -1,0 +1,1737 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "ResponseModel",
+            "id": "interface-ResponseModel-ac87391a35e0b8a5f7640a9b636e47017ad0a2268e0f29db7d047b58b8f7f26624d9e917640b0292f975f2d583d6a1f9ffc91cce3d67071c2c961a06b0159cab",
+            "file": "src/models/response.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface ResponseModel<T> {\n  success: boolean;\n  data: T;\n}\n\nexport const emptySuccessResponse = <T>(): ResponseModel<T> => {\n  return {\n    success: true,\n    data: undefined,\n  };\n};\n\nexport function empyResponse<T>(): ResponseModel<T> {\n  return {\n    success: true,\n    data: undefined,\n  };\n}\n\nexport function Response<T>(data: T): ResponseModel<T> {\n  return {\n    success: true,\n    data: data,\n  };\n}\n\nexport const successResponse = <T>(data: T): ResponseModel<T> => {\n  return {\n    success: true,\n    data: data,\n  };\n};\n",
+            "properties": [
+                {
+                    "name": "data",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "T",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "success",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "AppService",
+            "id": "injectable-AppService-b2fc36854345e1c993ed4f7398da6a9492a6a20e372597cc4a71b28ea58d7a195a4bf8d4d093c4035fd7b7fecb617f4efcf184aa46771d6c5d6144446eae486b",
+            "file": "src/app.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getHello",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 5,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@nestjs/common';\n\n@Injectable()\nexport class AppService {\n  getHello(): string {\n    return 'Hello World!';\n  }\n}\n",
+            "type": "injectable"
+        },
+        {
+            "name": "BankService",
+            "id": "injectable-BankService-9f429b146b5089808cb7104aa2c657104bc763bf1b0ad4aeedd3c88328b67f37cb1cf85d0520569e8b2fa5af2468213bddffa957dc968e47f5d8beb291ef9552",
+            "file": "src/services/bank.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "create",
+                    "args": [
+                        {
+                            "name": "dto",
+                            "type": "BankCreateModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<Bank>",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "dto",
+                            "type": "BankCreateModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "delete",
+                    "args": [
+                        {
+                            "name": "dto",
+                            "type": "BankDeleteModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "dto",
+                            "type": "BankDeleteModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getAll",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<Bank[]>",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ]
+                },
+                {
+                    "name": "getOne",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<Bank>",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "update",
+                    "args": [
+                        {
+                            "name": "dto",
+                            "type": "BankUpdateModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<Bank>",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "dto",
+                            "type": "BankUpdateModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { BadRequestException, Injectable } from '@nestjs/common';\nimport { EntityManager } from 'typeorm';\nimport { Bank } from '../entities/bank.entity';\nimport { BankCreateModel, BankDeleteModel, BankUpdateModel } from '../models/bank.model';\nimport { uuid } from 'uuidv4';\nimport { countBanksBalance } from '../utils/count.balance';\n\n@Injectable()\nexport class BankService {\n  constructor(private readonly entityManager: EntityManager) {}\n\n  async getAll(): Promise<Bank[]> {\n    const banks = await this.entityManager.find(Bank, { relations: { transactions: true } });\n    countBanksBalance(banks);\n    await this.entityManager.save(banks);\n    return banks;\n  }\n\n  async getOne(id: string): Promise<Bank> {\n    const bank = await this.entityManager.findOne(Bank, { where: { id }, relations: { transactions: true } });\n    countBanksBalance([bank]);\n    await this.entityManager.save(bank);\n    return bank;\n  }\n\n  async create(dto: BankCreateModel): Promise<Bank> {\n    const id = uuid();\n    await this.entityManager.insert(Bank, {\n      id,\n      name: dto.name,\n    });\n    return await this.entityManager.findOne(Bank, { where: { id } });\n  }\n\n  async update(dto: BankUpdateModel): Promise<Bank> {\n    const bank = await this.entityManager.findOne(Bank, {\n      where: { id: dto.id },\n    });\n    if (!bank) {\n      throw new BadRequestException('There is no such bank!');\n    }\n    bank.name = dto.name;\n    await this.entityManager.save(bank);\n    return this.entityManager.findOne(Bank, { where: { id: dto.id } });\n  }\n\n  async delete(dto: BankDeleteModel): Promise<void> {\n    const bank = await this.entityManager.findOne(Bank, { where: { id: dto.id }, relations: { transactions: true } });\n    if (bank?.transactions?.length) {\n      throw new BadRequestException(\"You can't delete bank with transactions\");\n    }\n    await this.entityManager.delete(Bank, dto.id);\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "entityManager",
+                        "type": "EntityManager",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 9,
+                "jsdoctags": [
+                    {
+                        "name": "entityManager",
+                        "type": "EntityManager",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "CategoryService",
+            "id": "injectable-CategoryService-41e819d02e880066660a26e69cf812d88d9737fc320e05543f160f9a003f9b317870e5cc16b23af73f9aa76e0219f2c21947569c138d5a45905b5d32d7b66a92",
+            "file": "src/services/category.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "create",
+                    "args": [
+                        {
+                            "name": "dto",
+                            "type": "CategoryCreateModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<Category>",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "dto",
+                            "type": "CategoryCreateModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "delete",
+                    "args": [
+                        {
+                            "name": "dto",
+                            "type": "CategoryDeleteModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 68,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "dto",
+                            "type": "CategoryDeleteModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getAll",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<Category[]>",
+                    "typeParameters": [],
+                    "line": 11,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ]
+                },
+                {
+                    "name": "getOne",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<Category>",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getStatisticsForPeriod",
+                    "args": [
+                        {
+                            "name": "dto",
+                            "type": "GetStatisticsFromPeriodModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<any>",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "dto",
+                            "type": "GetStatisticsFromPeriodModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "update",
+                    "args": [
+                        {
+                            "name": "dto",
+                            "type": "CategoryUpdateModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<Category>",
+                    "typeParameters": [],
+                    "line": 56,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "dto",
+                            "type": "CategoryUpdateModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { BadRequestException, Injectable } from '@nestjs/common';\nimport { Between, EntityManager } from 'typeorm';\nimport { Category } from '../entities/category.entity';\nimport { uuid } from 'uuidv4';\nimport { CategoryCreateModel, CategoryDeleteModel, CategoryUpdateModel, GetStatisticsFromPeriodModel } from '../models/category.model';\n\n@Injectable()\nexport class CategoryService {\n  constructor(private readonly entityManager: EntityManager) {}\n\n  async getAll(): Promise<Category[]> {\n    return await this.entityManager.find(Category, { relations: { transactions: true } });\n  }\n  async getOne(id: string): Promise<Category> {\n    return await this.entityManager.findOne(Category, { where: { id } });\n  }\n\n  async getStatisticsForPeriod(dto: GetStatisticsFromPeriodModel): Promise<any> {\n    try {\n      const statistics = [];\n      for (let i = 0; i < dto.ids.length; i++) {\n        let amount = 0;\n        let type = '';\n        const category = await this.entityManager.findOne(Category, {\n          relations: {\n            transactions: true,\n          },\n          where: { id: dto.ids[i], transactions: { createdAt: Between(new Date(dto.fromPeriod), new Date(dto.toPeriod)) } },\n        });\n        for (const i of category.transactions) {\n          amount += i.amount;\n          type = i.type;\n        }\n        const categoryStatistics = {\n          name: category.name,\n          type: type,\n          balance: amount,\n        };\n        statistics.push(categoryStatistics);\n      }\n      return statistics;\n    } catch (e) {\n      return e.message;\n    }\n  }\n\n  async create(dto: CategoryCreateModel): Promise<Category> {\n    const id = uuid();\n    await this.entityManager.insert(Category, {\n      id,\n      name: dto.name,\n    });\n    return await this.entityManager.findOne(Category, { where: { id } });\n  }\n\n  async update(dto: CategoryUpdateModel): Promise<Category> {\n    const category = await this.entityManager.findOne(Category, {\n      where: { id: dto.id },\n    });\n    if (!category) {\n      throw new BadRequestException('There is no such bank!');\n    }\n    category.name = dto.name;\n    await this.entityManager.save(category);\n    return this.entityManager.findOne(Category, { where: { id: dto.id } });\n  }\n\n  async delete(dto: CategoryDeleteModel): Promise<void> {\n    const category = await this.entityManager.findOne(Category, { where: { id: dto.id }, relations: { transactions: true } });\n    if (category?.transactions?.length) {\n      throw new BadRequestException(\"You can't delete bank with transactions\");\n    }\n    await this.entityManager.delete(Category, dto.id);\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "entityManager",
+                        "type": "EntityManager",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 8,
+                "jsdoctags": [
+                    {
+                        "name": "entityManager",
+                        "type": "EntityManager",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "TransactionService",
+            "id": "injectable-TransactionService-96669255032136b247f17ce7b68fa9c800cee0969fc31aee135a93fd2b9a5526259ed37a4462593517f3c6af033884ed3072ef5d568209a4dbadb5b6efee1188",
+            "file": "src/services/transaction.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "create",
+                    "args": [
+                        {
+                            "name": "dto",
+                            "type": "TransactionCreateModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<Transaction>",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "dto",
+                            "type": "TransactionCreateModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "delete",
+                    "args": [
+                        {
+                            "name": "dto",
+                            "type": "TransactionDeleteModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 72,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "dto",
+                            "type": "TransactionDeleteModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getAll",
+                    "args": [
+                        {
+                            "name": "skip",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "take",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<Transaction[]>",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "skip",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "take",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "webhookTransaction",
+                    "args": [
+                        {
+                            "name": "data",
+                            "type": "TransactionCreateModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "TransactionCreateModel",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "data",
+                            "type": "TransactionCreateModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { BadRequestException, Injectable } from '@nestjs/common';\nimport { EntityManager } from 'typeorm';\nimport { Transaction } from '../entities/transaction.entity';\nimport { TransactionCreateModel, TransactionDeleteModel } from '../models/transaction.model';\nimport { uuid } from 'uuidv4';\nimport { Bank } from '../entities/bank.entity';\nimport { Category } from '../entities/category.entity';\nimport { Logger } from '@nestjs/common';\n\n@Injectable()\nexport class TransactionService {\n  constructor(private readonly entityManager: EntityManager, private readonly logger: Logger) {}\n\n  async getAll(skip: number, take: number): Promise<Transaction[]> {\n    try {\n      const transactions = await this.entityManager\n        .createQueryBuilder()\n        .select('transaction')\n        .from(Transaction, 'transaction')\n        .leftJoinAndSelect('transaction.categories', 'category')\n        .leftJoinAndSelect('transaction.bank', 'bank')\n        .skip(skip)\n        .take(take)\n        .getMany();\n      // const transactions = await this.entityManager.find(Transaction, {\n      //   skip: skip,\n      //   take: take,\n      //   relations: { categories: true, bank: true },\n      // });\n      return transactions;\n    } catch (e) {\n      this.logger.error(`Error retrieving users: ${e.message}`);\n      throw e;\n    }\n  }\n  webhookTransaction(data: TransactionCreateModel): TransactionCreateModel {\n    return data;\n  }\n  async create(dto: TransactionCreateModel): Promise<Transaction> {\n    try {\n      const temp = [];\n      const bank = await this.entityManager.findOne(Bank, {\n        where: { id: dto.bank },\n      });\n      if (!bank) {\n        throw new BadRequestException('Bank not found');\n      }\n      for (const i of dto.categories) {\n        const checkCategories = await this.entityManager.findOne(Category, {\n          where: { id: i },\n        });\n        if (!checkCategories) {\n          throw new BadRequestException('Category not found');\n        }\n        temp.push(checkCategories);\n      }\n      const id = uuid();\n      const transaction = new Transaction();\n      transaction.id = id;\n      transaction.amount = dto.amount;\n      transaction.type = dto.type;\n      transaction.bankId = dto.bank;\n      transaction.categories = temp;\n      transaction.createdAt = dto.createAt;\n      await this.entityManager.save(transaction);\n      return transaction;\n    } catch (e) {\n      this.logger.error(e.message);\n      throw e;\n    }\n  }\n  async delete(dto: TransactionDeleteModel): Promise<void> {\n    try {\n      await this.entityManager.delete(Transaction, dto.id);\n    } catch (e) {\n      this.logger.error(e.message);\n      throw e;\n    }\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "entityManager",
+                        "type": "EntityManager",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "logger",
+                        "type": "Logger",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 11,
+                "jsdoctags": [
+                    {
+                        "name": "entityManager",
+                        "type": "EntityManager",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "logger",
+                        "type": "Logger",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [
+        {
+            "name": "BankCreateModel",
+            "id": "class-BankCreateModel-fe4962f6a922ddcfe5ba3117868aa894cc63e4bc4c7498638e965bd2336048c7afb281efee73e0dfe0f727594151a0749614b3ef9c944ad7011965a3f23f3fc9",
+            "file": "src/models/bank.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { ApiProperty } from '@nestjs/swagger';\n\nexport class BankCreateModel {\n  @ApiProperty()\n  name: string;\n}\n\nexport class BankUpdateModel {\n  @ApiProperty()\n  id: string;\n\n  @ApiProperty()\n  name: string;\n}\n\nexport class BankDeleteModel {\n  @ApiProperty()\n  id: string;\n}\n",
+            "properties": [
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "BankDeleteModel",
+            "id": "class-BankDeleteModel-fe4962f6a922ddcfe5ba3117868aa894cc63e4bc4c7498638e965bd2336048c7afb281efee73e0dfe0f727594151a0749614b3ef9c944ad7011965a3f23f3fc9",
+            "file": "src/models/bank.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { ApiProperty } from '@nestjs/swagger';\n\nexport class BankCreateModel {\n  @ApiProperty()\n  name: string;\n}\n\nexport class BankUpdateModel {\n  @ApiProperty()\n  id: string;\n\n  @ApiProperty()\n  name: string;\n}\n\nexport class BankDeleteModel {\n  @ApiProperty()\n  id: string;\n}\n",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "BankUpdateModel",
+            "id": "class-BankUpdateModel-fe4962f6a922ddcfe5ba3117868aa894cc63e4bc4c7498638e965bd2336048c7afb281efee73e0dfe0f727594151a0749614b3ef9c944ad7011965a3f23f3fc9",
+            "file": "src/models/bank.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { ApiProperty } from '@nestjs/swagger';\n\nexport class BankCreateModel {\n  @ApiProperty()\n  name: string;\n}\n\nexport class BankUpdateModel {\n  @ApiProperty()\n  id: string;\n\n  @ApiProperty()\n  name: string;\n}\n\nexport class BankDeleteModel {\n  @ApiProperty()\n  id: string;\n}\n",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "CategoryCreateModel",
+            "id": "class-CategoryCreateModel-d904da55aa9dba8b5c5fa5b7623c25ba0a15d999243b6348bbeea2fe8d10b54cdfa12eac34f14e9e8ae73aa1f9d0ca823e41c6d1dcf5c85b43565ef4347692ca",
+            "file": "src/models/category.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { ApiProperty } from '@nestjs/swagger';\n\nexport class CategoryCreateModel {\n  @ApiProperty()\n  name: string;\n}\n\nexport class CategoryUpdateModel {\n  @ApiProperty()\n  id: string;\n\n  @ApiProperty()\n  name: string;\n}\n\nexport class CategoryDeleteModel {\n  @ApiProperty()\n  id: string;\n}\n\nexport class GetStatisticsFromPeriodModel {\n  @ApiProperty()\n  ids: string[];\n\n  @ApiProperty()\n  fromPeriod: string;\n\n  @ApiProperty()\n  toPeriod: string;\n}\n",
+            "properties": [
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "CategoryDeleteModel",
+            "id": "class-CategoryDeleteModel-d904da55aa9dba8b5c5fa5b7623c25ba0a15d999243b6348bbeea2fe8d10b54cdfa12eac34f14e9e8ae73aa1f9d0ca823e41c6d1dcf5c85b43565ef4347692ca",
+            "file": "src/models/category.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { ApiProperty } from '@nestjs/swagger';\n\nexport class CategoryCreateModel {\n  @ApiProperty()\n  name: string;\n}\n\nexport class CategoryUpdateModel {\n  @ApiProperty()\n  id: string;\n\n  @ApiProperty()\n  name: string;\n}\n\nexport class CategoryDeleteModel {\n  @ApiProperty()\n  id: string;\n}\n\nexport class GetStatisticsFromPeriodModel {\n  @ApiProperty()\n  ids: string[];\n\n  @ApiProperty()\n  fromPeriod: string;\n\n  @ApiProperty()\n  toPeriod: string;\n}\n",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "CategoryUpdateModel",
+            "id": "class-CategoryUpdateModel-d904da55aa9dba8b5c5fa5b7623c25ba0a15d999243b6348bbeea2fe8d10b54cdfa12eac34f14e9e8ae73aa1f9d0ca823e41c6d1dcf5c85b43565ef4347692ca",
+            "file": "src/models/category.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { ApiProperty } from '@nestjs/swagger';\n\nexport class CategoryCreateModel {\n  @ApiProperty()\n  name: string;\n}\n\nexport class CategoryUpdateModel {\n  @ApiProperty()\n  id: string;\n\n  @ApiProperty()\n  name: string;\n}\n\nexport class CategoryDeleteModel {\n  @ApiProperty()\n  id: string;\n}\n\nexport class GetStatisticsFromPeriodModel {\n  @ApiProperty()\n  ids: string[];\n\n  @ApiProperty()\n  fromPeriod: string;\n\n  @ApiProperty()\n  toPeriod: string;\n}\n",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "GetStatisticsFromPeriodModel",
+            "id": "class-GetStatisticsFromPeriodModel-d904da55aa9dba8b5c5fa5b7623c25ba0a15d999243b6348bbeea2fe8d10b54cdfa12eac34f14e9e8ae73aa1f9d0ca823e41c6d1dcf5c85b43565ef4347692ca",
+            "file": "src/models/category.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { ApiProperty } from '@nestjs/swagger';\n\nexport class CategoryCreateModel {\n  @ApiProperty()\n  name: string;\n}\n\nexport class CategoryUpdateModel {\n  @ApiProperty()\n  id: string;\n\n  @ApiProperty()\n  name: string;\n}\n\nexport class CategoryDeleteModel {\n  @ApiProperty()\n  id: string;\n}\n\nexport class GetStatisticsFromPeriodModel {\n  @ApiProperty()\n  ids: string[];\n\n  @ApiProperty()\n  fromPeriod: string;\n\n  @ApiProperty()\n  toPeriod: string;\n}\n",
+            "properties": [
+                {
+                    "name": "fromPeriod",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "ids",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "toPeriod",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "GlobalExceptionFilter",
+            "id": "class-GlobalExceptionFilter-94ab4911187a2a98bb0a20f07c2fe3b106e4a8d32f52a39743233707ca8c33497fe3be5f634107beb284a3ab5c64219e4eda0983d572b6b63aa9d1304a9f219f",
+            "file": "src/utils/exceptions.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';\nimport { Response } from 'express';\n\n@Catch()\nexport class GlobalExceptionFilter implements ExceptionFilter {\n  catch(exception: Error, host: ArgumentsHost) {\n    const temp = host.switchToHttp();\n    const response = temp.getResponse<Response>();\n\n    if (exception instanceof HttpException) {\n      response.status(exception.getStatus()).json({\n        statusCode: exception.getStatus(),\n        message: exception.message,\n      });\n    } else {\n      console.error(exception);\n\n      response.status(500).json({\n        statusCode: 500,\n        message: 'Internal server error',\n      });\n    }\n  }\n}\n",
+            "properties": [],
+            "rawdescription": "\n",
+            "methods": [
+                {
+                    "name": "catch",
+                    "args": [
+                        {
+                            "name": "exception",
+                            "type": "Error",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "host",
+                            "type": "ArgumentsHost",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 6,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "exception",
+                            "type": "Error",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "host",
+                            "type": "ArgumentsHost",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "implements": [
+                "ExceptionFilter"
+            ]
+        },
+        {
+            "name": "TransactionCreateModel",
+            "id": "class-TransactionCreateModel-07cae10caf56a097f8b30e8eea3e640f36904742ddaa4cda71892fe191619ecad5efe55666ba829b87576e2c1d4a38925815cf4cbbc2a45edcfa6a03141332af",
+            "file": "src/models/transaction.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { ApiProperty } from \"@nestjs/swagger\";\nimport { IsOptional, IsUUID } from \"class-validator\";\n\nexport class TransactionModel {\n  @ApiProperty()\n  id: string;\n  @ApiProperty()\n  amount: number;\n  @ApiProperty()\n  type: TransactionType;\n}\n\nexport enum TransactionType {\n  PROFITABLE = \"profitable\",\n  CONSUMABLE = \"consumable\",\n}\n\nexport class TransactionCreateModel {\n  @ApiProperty()\n  amount: number;\n  @ApiProperty()\n  type: TransactionType;\n\n  @ApiProperty()\n  categories: [];\n\n  @IsUUID()\n  @ApiProperty()\n  bank: string;\n\n  @ApiProperty()\n  @IsOptional()\n  createAt: Date;\n}\nexport class TransactionDeleteModel {\n  @ApiProperty()\n  id: string;\n}\n",
+            "properties": [
+                {
+                    "name": "amount",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "bank",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "decorators": [
+                        {
+                            "name": "IsUUID",
+                            "stringifiedArguments": ""
+                        },
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "categories",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "createAt",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Date",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        },
+                        {
+                            "name": "IsOptional",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TransactionType",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "TransactionDeleteModel",
+            "id": "class-TransactionDeleteModel-07cae10caf56a097f8b30e8eea3e640f36904742ddaa4cda71892fe191619ecad5efe55666ba829b87576e2c1d4a38925815cf4cbbc2a45edcfa6a03141332af",
+            "file": "src/models/transaction.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { ApiProperty } from \"@nestjs/swagger\";\nimport { IsOptional, IsUUID } from \"class-validator\";\n\nexport class TransactionModel {\n  @ApiProperty()\n  id: string;\n  @ApiProperty()\n  amount: number;\n  @ApiProperty()\n  type: TransactionType;\n}\n\nexport enum TransactionType {\n  PROFITABLE = \"profitable\",\n  CONSUMABLE = \"consumable\",\n}\n\nexport class TransactionCreateModel {\n  @ApiProperty()\n  amount: number;\n  @ApiProperty()\n  type: TransactionType;\n\n  @ApiProperty()\n  categories: [];\n\n  @IsUUID()\n  @ApiProperty()\n  bank: string;\n\n  @ApiProperty()\n  @IsOptional()\n  createAt: Date;\n}\nexport class TransactionDeleteModel {\n  @ApiProperty()\n  id: string;\n}\n",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 37,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "TransactionModel",
+            "id": "class-TransactionModel-07cae10caf56a097f8b30e8eea3e640f36904742ddaa4cda71892fe191619ecad5efe55666ba829b87576e2c1d4a38925815cf4cbbc2a45edcfa6a03141332af",
+            "file": "src/models/transaction.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { ApiProperty } from \"@nestjs/swagger\";\nimport { IsOptional, IsUUID } from \"class-validator\";\n\nexport class TransactionModel {\n  @ApiProperty()\n  id: string;\n  @ApiProperty()\n  amount: number;\n  @ApiProperty()\n  type: TransactionType;\n}\n\nexport enum TransactionType {\n  PROFITABLE = \"profitable\",\n  CONSUMABLE = \"consumable\",\n}\n\nexport class TransactionCreateModel {\n  @ApiProperty()\n  amount: number;\n  @ApiProperty()\n  type: TransactionType;\n\n  @ApiProperty()\n  categories: [];\n\n  @IsUUID()\n  @ApiProperty()\n  bank: string;\n\n  @ApiProperty()\n  @IsOptional()\n  createAt: Date;\n}\nexport class TransactionDeleteModel {\n  @ApiProperty()\n  id: string;\n}\n",
+            "properties": [
+                {
+                    "name": "amount",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 8,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TransactionType",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "decorators": [
+                        {
+                            "name": "ApiProperty",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [],
+    "components": [],
+    "modules": [
+        {
+            "name": "AppModule",
+            "id": "module-AppModule-2baeab2c3d076a8e6d6f05ce450f8203c2bb61781524aff026416e9a19cf57ec348e891058f296b1076f643ee7bdac7004aa8618a081a14acd600f6a3d5d9db6",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app.module.ts",
+            "methods": [],
+            "sourceCode": "import { Logger, Module } from '@nestjs/common';\nimport { TypeOrmModule } from '@nestjs/typeorm';\nimport { Bank } from './entities/bank.entity';\nimport { Category } from './entities/category.entity';\nimport { Transaction } from './entities/transaction.entity';\nimport { BankController } from './controllers/bank.controller';\nimport { CategoryController } from './controllers/category.controller';\nimport { TransactionController } from './controllers/transaction.controller';\nimport { BankService } from './services/bank.service';\nimport { CategoryService } from './services/category.service';\nimport { TransactionService } from './services/transaction.service';\nimport { HttpModule } from '@nestjs/axios';\nimport { GlobalExceptionFilter } from './utils/exceptions';\n@Module({\n  imports: [\n    HttpModule,\n    TypeOrmModule.forRoot({\n      type: 'postgres',\n      host: 'localhost',\n      port: 5432,\n      username: 'postgres',\n      password: 'postgres',\n      database: 'bankTransactions',\n      entities: [Bank, Category, Transaction],\n      synchronize: true,\n      logging: ['error'],\n    }),\n  ],\n  controllers: [BankController, CategoryController, TransactionController],\n  providers: [BankService, CategoryService, TransactionService, GlobalExceptionFilter, Logger],\n})\nexport class AppModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": [
+                        {
+                            "name": "BankService"
+                        },
+                        {
+                            "name": "CategoryService"
+                        },
+                        {
+                            "name": "TransactionService"
+                        }
+                    ]
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "countBanksBalance",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/utils/count.balance.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "banks => {\n  for (let i = 0; i < banks.length; i++) {\n    banks[i].balance = 0;\n    for (let j = 0; j < banks[i].transactions.length; j++) {\n      if (banks[i].transactions[j].type === TransactionType.CONSUMABLE) {\n        banks[i].balance -= banks[i].transactions[j].amount;\n      }\n      if (banks[i].transactions[j].type === TransactionType.PROFITABLE) {\n        banks[i].balance += banks[i].transactions[j].amount;\n      }\n    }\n  }\n}"
+            },
+            {
+                "name": "emptySuccessResponse",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/models/response.model.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "<T>(): ResponseModel<T> => {\n  return {\n    success: true,\n    data: undefined,\n  };\n}"
+            },
+            {
+                "name": "successResponse",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/models/response.model.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "<T>(data: T): ResponseModel<T> => {\n  return {\n    success: true,\n    data: data,\n  };\n}"
+            }
+        ],
+        "functions": [
+            {
+                "name": "bootstrap",
+                "file": "src/main.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": []
+            },
+            {
+                "name": "empyResponse",
+                "file": "src/models/response.model.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [],
+                "returnType": "ResponseModel<T>"
+            },
+            {
+                "name": "Response",
+                "file": "src/models/response.model.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "data",
+                        "type": "T",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "ResponseModel<T>",
+                "jsdoctags": [
+                    {
+                        "name": "data",
+                        "type": "T",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typealiases": [],
+        "enumerations": [
+            {
+                "name": "TransactionType",
+                "childs": [
+                    {
+                        "name": "PROFITABLE",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "profitable"
+                    },
+                    {
+                        "name": "CONSUMABLE",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "consumable"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/models/transaction.model.ts"
+            }
+        ],
+        "groupedVariables": {
+            "src/utils/count.balance.ts": [
+                {
+                    "name": "countBanksBalance",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/utils/count.balance.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "banks => {\n  for (let i = 0; i < banks.length; i++) {\n    banks[i].balance = 0;\n    for (let j = 0; j < banks[i].transactions.length; j++) {\n      if (banks[i].transactions[j].type === TransactionType.CONSUMABLE) {\n        banks[i].balance -= banks[i].transactions[j].amount;\n      }\n      if (banks[i].transactions[j].type === TransactionType.PROFITABLE) {\n        banks[i].balance += banks[i].transactions[j].amount;\n      }\n    }\n  }\n}"
+                }
+            ],
+            "src/models/response.model.ts": [
+                {
+                    "name": "emptySuccessResponse",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/models/response.model.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "<T>(): ResponseModel<T> => {\n  return {\n    success: true,\n    data: undefined,\n  };\n}"
+                },
+                {
+                    "name": "successResponse",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/models/response.model.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "<T>(data: T): ResponseModel<T> => {\n  return {\n    success: true,\n    data: data,\n  };\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {
+            "src/main.ts": [
+                {
+                    "name": "bootstrap",
+                    "file": "src/main.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": []
+                }
+            ],
+            "src/models/response.model.ts": [
+                {
+                    "name": "empyResponse",
+                    "file": "src/models/response.model.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [],
+                    "returnType": "ResponseModel<T>"
+                },
+                {
+                    "name": "Response",
+                    "file": "src/models/response.model.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "data",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "ResponseModel<T>",
+                    "jsdoctags": [
+                        {
+                            "name": "data",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "groupedEnumerations": {
+            "src/models/transaction.model.ts": [
+                {
+                    "name": "TransactionType",
+                    "childs": [
+                        {
+                            "name": "PROFITABLE",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "profitable"
+                        },
+                        {
+                            "name": "CONSUMABLE",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "consumable"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/models/transaction.model.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app.controller.ts",
+                "type": "controller",
+                "linktype": "controller",
+                "name": "AppController",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "AppService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/controllers/bank.controller.ts",
+                "type": "controller",
+                "linktype": "controller",
+                "name": "BankController",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/controllers/category.controller.ts",
+                "type": "controller",
+                "linktype": "controller",
+                "name": "CategoryController",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/controllers/transaction.controller.ts",
+                "type": "controller",
+                "linktype": "controller",
+                "name": "TransactionController",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/entities/bank.entity.ts",
+                "type": "entity",
+                "linktype": "entity",
+                "name": "Bank",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/entities/category.entity.ts",
+                "type": "entity",
+                "linktype": "entity",
+                "name": "Category",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/entities/transaction.entity.ts",
+                "type": "entity",
+                "linktype": "entity",
+                "name": "Transaction",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/main.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "bootstrap",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/bank.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "BankCreateModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/bank.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "BankDeleteModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/bank.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "BankUpdateModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/category.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "CategoryCreateModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/category.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "CategoryDeleteModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/category.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "CategoryUpdateModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/category.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "GetStatisticsFromPeriodModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/response.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ResponseModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/response.model.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "empyResponse",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/response.model.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "Response",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/response.model.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "emptySuccessResponse",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/response.model.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "successResponse",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/transaction.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "TransactionCreateModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/transaction.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "TransactionDeleteModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/models/transaction.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "TransactionModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/services/bank.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "BankService",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/services/category.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "CategoryService",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/services/transaction.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "TransactionService",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/utils/count.balance.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "countBanksBalance",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/utils/exceptions.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "GlobalExceptionFilter",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            }
+        ]
+    }
+}
