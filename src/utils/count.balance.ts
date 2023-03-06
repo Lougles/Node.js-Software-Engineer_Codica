@@ -13,3 +13,18 @@ export const countBanksBalance = banks => {
     }
   }
 };
+
+// export const countBanksBalance = banks => {
+//   return banks.map(bank => {
+//     const balance = bank.transactions.reduce((acc, transaction) => {
+//       if (transaction.type === TransactionType.CONSUMABLE) {
+//         return acc - transaction.amount;
+//       }
+//       if (transaction.type === TransactionType.PROFITABLE) {
+//         return acc + transaction.amount;
+//       }
+//       return acc;
+//     }, 0);
+//     return { ...bank, balance };
+//   });
+// };
