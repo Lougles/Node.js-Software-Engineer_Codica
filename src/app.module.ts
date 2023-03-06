@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Bank } from './entities/bank.entity';
 import { Category } from './entities/category.entity';
@@ -23,9 +23,10 @@ import { GlobalExceptionFilter } from './utils/exceptions';
       database: 'bankTransactions',
       entities: [Bank, Category, Transaction],
       synchronize: true,
+      logging: ['error'],
     }),
   ],
   controllers: [BankController, CategoryController, TransactionController],
-  providers: [BankService, CategoryService, TransactionService, GlobalExceptionFilter],
+  providers: [BankService, CategoryService, TransactionService, GlobalExceptionFilter, Logger],
 })
 export class AppModule {}

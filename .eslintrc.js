@@ -17,10 +17,25 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js'],
   rules: {
-    '@typescript-eslint/interface-name-prefix': 'off',
+    'no-console': 'warn',
+    'no-debugger': 'warn',
+    'no-empty-function': 'warn',
+    'no-unused-vars': 'warn',
+    'no-useless-constructor': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        argsIgnorePattern: '^_',
+        ignoreRestSiblings: true,
+      },
+    ],
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@nestjs/no-http-server': 'off',
+    '@nestjs/no-extraneous-class': 'off',
   },
 };
-
