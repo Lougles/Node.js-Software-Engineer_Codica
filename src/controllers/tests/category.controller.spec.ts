@@ -1,11 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CategoryController } from '../category.controller';
 import { CategoryService } from '../../services/category.service';
-import { Category } from '../../entities/category.entity';
 import { ResponseModel, successResponse } from '../../models/response.model';
-import { CategoryCreateModel, CategoryDeleteModel, CategoryUpdateModel, GetStatisticsFromPeriodModel } from '../../models/category.model';
-import { mockCategory, mockCreateCategoryModel, mockDeleteCategoryModel, mockGetStatisticsFromPeriodModel, mockUpdateCategoryModel } from './category.mock';
-
+import { Category } from '../../entities/category.entity';
 describe('CategoryController', () => {
   let controller: CategoryController;
   let service: CategoryService;
@@ -33,63 +30,81 @@ describe('CategoryController', () => {
   });
 
   describe('getAll', () => {
-    it('should return a list of categories', async () => {
-      const mockCategories: Category[] = [mockCategory];
-      jest.spyOn(service, 'getAll').mockResolvedValueOnce(mockCategories);
-
+    it('should return an array of categories', async () => {
+      const categories: Category[] = [{ id: '1', name: 'Category 1', transactions: [] }];
+      jest.spyOn(service, 'getAll').mockResolvedValue(categories);
       const result: ResponseModel<Category[]> = await controller.getAll();
-
-      expect(result).toEqual(successResponse(mockCategories));
+      expect(result).toEqual(successResponse(categories));
     });
   });
 
   describe('getOne', () => {
     it('should return a category by id', async () => {
-      jest.spyOn(service, 'getOne').mockResolvedValueOnce(mockCategory);
-
+      const category: Category = { id: '1', name: 'Category 1', transactions: [] };
+      jest.spyOn(service, 'getOne').mockResolvedValueOnce(category);
       const result: ResponseModel<Category> = await controller.getOne({ id: '1' });
-
-      expect(result).toEqual(successResponse(mockCategory));
+      expect(result).toEqual(successResponse(category));
     });
   });
 
   describe('getStatisticsForPeriod', () => {
+    const dto = {
+      ids: ['1', '2'],
+      fromPeriod: '2022-01-01',
+      toPeriod: '2022-02-01',
+    };
+
+    const mockCategory = {
+      id: '1',
+      name: 'Category 1',
+      transactions: [
+        {
+          id: '1',
+          amount: 100,
+          type: 'income',
+          createdAt: new Date('2022-01-01'),
+        },
+        {
+          id: '2',
+          amount: 50,
+          type: 'expense',
+          createdAt: new Date('2022-02-01'),
+        },
+      ],
+    };
     it('should return category statistics for a period', async () => {
+      const statistics = [{ ids: ['1', '2'], fromPeriod: '2023-03-01', toPeriod: '2023-03-06' }];
       jest.spyOn(service, 'getStatisticsForPeriod').mockResolvedValueOnce(mockCategory);
-
-      const result: ResponseModel<Category> = await controller.getStatisticsForPeriod(mockGetStatisticsFromPeriodModel);
-
+      const result: ResponseModel<Category> = await controller.getStatisticsForPeriod(dto);
       expect(result).toEqual(successResponse(mockCategory));
     });
   });
 
   describe('create', () => {
     it('should create a new category', async () => {
-      jest.spyOn(service, 'create').mockResolvedValueOnce(mockCategory);
-
-      const result: ResponseModel<Category> = await controller.create(mockCreateCategoryModel);
-
-      expect(result).toEqual(successResponse(mockCategory));
+      const category: Category = { id: '1', name: 'Category', transactions: [] };
+      const categoryCreateModel = { name: 'Category' };
+      jest.spyOn(service, 'create').mockResolvedValueOnce(category);
+      const result: ResponseModel<Category> = await controller.create(categoryCreateModel);
+      expect(result).toEqual(successResponse(category));
     });
   });
 
   describe('update', () => {
     it('should update a category', async () => {
-      jest.spyOn(service, 'update').mockResolvedValueOnce(mockCategory);
-
-      const result: ResponseModel<Category> = await controller.update(mockUpdateCategoryModel);
-
-      expect(result).toEqual(successResponse(mockCategory));
+      const category: Category = { id: '1', name: 'Category', transactions: [] };
+      const categoryUpdateModel = { id: '1', name: 'Category 2' };
+      jest.spyOn(service, 'update').mockResolvedValueOnce(category);
+      const result: ResponseModel<Category> = await controller.update(categoryUpdateModel);
+      expect(result).toEqual(successResponse(category));
     });
   });
 
   describe('delete', () => {
     it('should delete a category', async () => {
       jest.spyOn(service, 'delete').mockResolvedValueOnce(undefined);
-
-      const result: ResponseModel<void> = await controller.delete(mockDeleteCategoryModel);
-
-      expect(result).toEqual({ success: true });
+      const result: ResponseModel<void> = await controller.delete({ id: '1' });
+      expect(result).toEqual(successResponse(undefined));
     });
   });
 });
